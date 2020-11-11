@@ -1,5 +1,6 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { Link, graphql, navigate } from "gatsby"
+import { ReactiveBase, DataSearch } from "@appbaseio/reactivesearch"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -27,6 +28,17 @@ const BlogIndex = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
       <Bio />
+      <ReactiveBase app="gatsby" url="http://localhost:9200">
+        <DataSearch
+          componentId="search"
+          dataField={["title", "title.search"]}
+          onValueSelected={(value, _, source) => {
+            if (value.trim()) {
+              navigate(source.slug)
+            }
+          }}
+        />
+      </ReactiveBase>
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
