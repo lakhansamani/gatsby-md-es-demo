@@ -54,6 +54,6 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "search-index": "node index-search-data.js"
+    "index-search-data": "node index-search-data.js"
   }
 }

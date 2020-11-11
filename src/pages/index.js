@@ -28,8 +28,9 @@ const BlogIndex = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
       <Bio />
-      <ReactiveBase app="gatsby" url="http://localhost:9200">
+      <ReactiveBase app="md-to-es-demo" url="https://1a7h6vQjW:4d691399-955d-470c-a914-be6edf0095c6@appbase-demo-ansible-abxiydt-es.searchbase.io">
         <DataSearch
+          placeholder="Search title"
           componentId="search"
           dataField={["title", "title.search"]}
           onValueSelected={(value, _, source) => {
